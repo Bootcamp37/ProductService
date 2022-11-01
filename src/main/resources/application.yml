@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: product-service
+  data:
+    mongodb:
+      database: db_product
+      host: localhost
+      port: 27018
+server:
+  port: 8081
+message:
+  path-product: /api/v1/products
+  path-productType: /api/v1/productType
