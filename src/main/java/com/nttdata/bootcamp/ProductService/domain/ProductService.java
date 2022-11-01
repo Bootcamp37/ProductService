@@ -2,7 +2,7 @@ package com.nttdata.bootcamp.ProductService.domain;
 
 import com.nttdata.bootcamp.ProductService.domain.dto.ProductRequest;
 import com.nttdata.bootcamp.ProductService.domain.dto.ProductResponse;
-import com.nttdata.bootcamp.ProductService.domain.mapper.IProductMapper;
+import com.nttdata.bootcamp.ProductService.infraestructure.IProductMapper;
 import com.nttdata.bootcamp.ProductService.infraestructure.IProductRepository;
 import com.nttdata.bootcamp.ProductService.infraestructure.IProductService;
 import lombok.RequiredArgsConstructor;

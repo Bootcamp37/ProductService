@@ -3,6 +3,7 @@ package com.nttdata.bootcamp.ProductService.domain.mapper;
 import com.nttdata.bootcamp.ProductService.domain.dto.ProductRequest;
 import com.nttdata.bootcamp.ProductService.domain.dto.ProductResponse;
 import com.nttdata.bootcamp.ProductService.domain.entity.Product;
+import com.nttdata.bootcamp.ProductService.infraestructure.IProductMapper;
 import org.springframework.stereotype.Component;
 
 @Component

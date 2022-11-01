@@ -1,4 +1,7 @@
 spring:
+  config:
+    import:
+      - optional:configserver:http://localhost:8888
   application:
     name: product-service
   data:
@@ -8,6 +11,11 @@ spring:
       port: 27018
 server:
   port: 8081
+management:
+  endpoint:
+    web:
+      exposure:
+        include: "*"
 message:
   path-product: /api/v1/products
   path-productType: /api/v1/productType
