@@ -40,11 +40,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Mono<ProductResponse> save(ProductRequest request) {
-        // Convierte el objeto en un Mono
-        return Mono.just(request)
-                // Valida el request
-                .filter(validate)
+    public Mono<ProductResponse> save(Mono<ProductRequest> request) {
+        // Valida el request
+        return request.filter(validate)
                 // Convierte el request en entity
                 .map(mapper::toEntity)
                 // Guarda el entity en el repository
@@ -56,11 +54,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Mono<ProductResponse> update(ProductRequest request, String id) {
-        // Convertir el objeto en Mono
-        return Mono.just(request)
-                // Validar el request
-                .filter(validate)
+    public Mono<ProductResponse> update(Mono<ProductRequest> request, String id) {
+        // Validar el request
+        return request.filter(validate)
                 // Si no es valido retorna error
                 .switchIfEmpty(Mono.error(RuntimeException::new))
                 .flatMap(item ->

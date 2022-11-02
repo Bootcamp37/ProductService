@@ -10,9 +10,9 @@ public interface IProductService {
 
     Mono<ProductResponse> getById(String id);
 
-    Mono<ProductResponse> save(ProductRequest request);
+    Mono<ProductResponse> save(Mono<ProductRequest> request);
 
-    Mono<ProductResponse> update(ProductRequest request, String id);
+    Mono<ProductResponse> update(Mono<ProductRequest> request, String id);
 
     Mono<ProductResponse> delete(String id);
 }
