@@ -20,6 +20,7 @@ public class ProductTypeController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Flux<ProductType> getAll() {
+        log.debug("====> ProductTypeController: GetAll");
         return Flux.fromArray(ProductType.values());
     }
 }
