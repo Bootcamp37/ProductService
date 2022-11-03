@@ -1,16 +1,14 @@
+server:
+  port: 8081
 spring:
+  application:
+    name: product-service
   config:
     import:
       - optional:configserver:http://ms-configserver:8888
-  application:
-    name: product-service
   data:
     mongodb:
-      database: db_product
-      host: localhost
-      port: 27018
-server:
-  port: 8081
+      uri: mongodb://db_product:27017/db_product
 management:
   endpoint:
     web:
