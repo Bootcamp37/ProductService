@@ -12,12 +12,12 @@ import java.util.function.Predicate;
 public class ProductValidate implements Predicate<ProductRequest> {
     @Override
     public boolean test(ProductRequest productRequest) {
-        log.debug("====> ProductValidate: Test");
+        log.info("====> ProductValidate: Test");
         return validateName(productRequest.getName());
     }
 
     public boolean validateName(@NotNull String name) {
-        log.debug("====> ProductValidate: ValidateName");
+        log.info("====> ProductValidate: ValidateName");
         return !name.isBlank();
     }
 }

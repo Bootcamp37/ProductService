@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class ProductMapper implements IProductMapper {
     @Override
     public Product toEntity(ProductRequest request) {
-        log.debug("====> ProductMapper: ToEntity");
+        log.info("====> ProductMapper: ToEntity");
         Product product = new Product();
         BeanUtils.copyProperties(request, product);
         return product;
@@ -21,7 +21,7 @@ public class ProductMapper implements IProductMapper {
 
     @Override
     public ProductResponse toResponse(Product product) {
-        log.debug("====> ProductMapper: ToResponse");
+        log.info("====> ProductMapper: ToResponse");
         ProductResponse productResponse = new ProductResponse();
         BeanUtils.copyProperties(product, productResponse);
         return productResponse;

@@ -27,14 +27,14 @@ public class ProductController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public Flux<ProductResponse> getAll() {
-        log.debug("====> ProductController: GetAll");
+        log.info("====> ProductController: GetAll");
         return service.getAll();
     }
 
     @GetMapping(path = "/{id}")
     @ResponseBody
     public ResponseEntity<Mono<ProductResponse>> getById(@PathVariable String id) {
-        log.debug("====> ProductController: GetById");
+        log.info("====> ProductController: GetById");
         Mono<ProductResponse> productResponseMono = service.getById(id);
         return new ResponseEntity<>(productResponseMono, productResponseMono != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
@@ -42,19 +42,19 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<ProductResponse> save(@RequestBody ProductRequest request) {
-        log.debug("====> ProductController: Save");
+        log.info("====> ProductController: Save");
         return service.save(Mono.just(request));
     }
 
     @PutMapping("/update/{id}")
     public Mono<ProductResponse> update(@RequestBody ProductRequest request, @PathVariable String id) {
-        log.debug("====> ProductController: Update");
+        log.info("====> ProductController: Update");
         return service.update(Mono.just(request), id);
     }
 
     @DeleteMapping("/delete/{id}")
     public Mono<ResponseEntity<Void>> delete(@PathVariable String id) {
-        log.debug("====> ProductController: Delete");
+        log.info("====> ProductController: Delete");
         return service.delete(id)
                 .map(r -> ResponseEntity.ok().<Void>build())
                 .defaultIfEmpty(ResponseEntity.notFound().build());

@@ -25,14 +25,14 @@ public class ProductService implements IProductService {
 
     @Override
     public Flux<ProductResponse> getAll() {
-        log.debug("====> ProductService: GetAll");
+        log.info("====> ProductService: GetAll");
         return repository.findAll()
                 .map(mapper::toResponse);
     }
 
     @Override
     public Mono<ProductResponse> getById(String id) {
-        log.debug("====> ProductService: GetById");
+        log.info("====> ProductService: GetById");
         return repository.findById(id)
                 .map(mapper::toResponse)
                 .switchIfEmpty(Mono.error(RuntimeException::new));
@@ -40,7 +40,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Mono<ProductResponse> save(Mono<ProductRequest> request) {
-        log.debug("====> ProductService: Save");
+        log.info("====> ProductService: Save");
         return request.map(this::printDebug)
                 .filter(validate)
                 .map(mapper::toEntity)
@@ -51,7 +51,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Mono<ProductResponse> update(Mono<ProductRequest> request, String id) {
-        log.debug("====> ProductService: Update");
+        log.info("====> ProductService: Update");
         return request.map(this::printDebug)
                 .filter(validate)
                 .flatMap(item ->
@@ -68,15 +68,16 @@ public class ProductService implements IProductService {
 
     @Override
     public Mono<ProductResponse> delete(String id) {
-        log.debug("====> ProductService: Delete");
+        log.info("====> ProductService: Delete");
         return repository.findById(id)
                 .switchIfEmpty(Mono.error(RuntimeException::new))
                 .flatMap(deleteCustomer -> repository.delete(deleteCustomer)
                         .then(Mono.just(mapper.toResponse(deleteCustomer))));
     }
-    public ProductRequest printDebug(ProductRequest request){
-        log.debug("====> ProductService: printDebug");
-        log.debug("====> ProductService: Request ==> " + request.toString());
+
+    public ProductRequest printDebug(ProductRequest request) {
+        log.info("====> ProductService: printDebug");
+        log.info("====> ProductService: Request ==> " + request.toString());
         return request;
     }
 }
