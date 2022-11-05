@@ -16,5 +16,6 @@ public class Product {
     private String name;
     private String description;
     private ProductType productType;
+    private ProductSubType productSubType;
     private CustomerType customerType;
 }
