@@ -5,10 +5,14 @@ spring:
     name: product-service
   config:
     import:
-      - optional:configserver:http://ms-configserver:8888
+      - optional:configserver:https://ms-config.azurewebsites.net
   data:
     mongodb:
-      uri: mongodb://db_product:27017/db_product
+      uri: mongodb+srv://admin:5K8yj70q4RpuiBSE@bootcamp37.anglhbu.mongodb.net/db_product
+eureka:
+  client:
+    service-url:
+      defaultZone: https://ms-discovery.azurewebsites.net/eureka/
 management:
   endpoint:
     web:
