@@ -22,5 +22,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          repository: pedrodiaz/ms-customer
+          repository: pedrodiaz/ms-product
           tags: ${{github.run_number}}
